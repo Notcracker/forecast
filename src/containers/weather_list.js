@@ -30,7 +30,7 @@ class WeatherList extends Component {
                 this.disappearButton.bind(this);
                 const toChange = JSON.parse(localStorage.nameForData);
                 for (var i in toChange) {
-                  if (toChange[i].city.name === name) {
+                  if (toChange[i].city!== undefined && toChange[i].city.name === name) {
                     toChange.splice(i, 1);
                     localStorage.nameForData = JSON.stringify(toChange);
                     this.forceUpdate();
@@ -45,12 +45,13 @@ class WeatherList extends Component {
         </tr>
 
     );
-    }
+    } 
   }
 
 
   render() {
     const n = JSON.parse(localStorage.getItem('nameForData'));
+    console.log(n);
     return (
       <table className="table">
         <thead>
