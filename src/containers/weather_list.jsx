@@ -28,9 +28,9 @@ class WeatherList extends Component {
             onClick={() => {
               this.disappearButton.bind(this);
               const toChange = JSON.parse(localStorage.nameForData);
-              for (var i in toChange) {
-                if (toChange[i].city !== undefined && toChange[i].city.name === name) {
-                  toChange.splice(i, 1);
+              for (const element of toChange) {
+                if (element.city.name === name) {
+                  toChange.splice(toChange.indexOf(element), 1);
                   localStorage.nameForData = JSON.stringify(toChange);
                   this.forceUpdate();
                 }
@@ -44,7 +44,6 @@ class WeatherList extends Component {
       </tr>
 
     );
-    
   }
 
 
